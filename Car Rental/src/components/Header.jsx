@@ -1,14 +1,25 @@
 import { useState } from "react";
+import List from "./List";
 
 const Header = () => {
 
     const [Name, setName] = useState("");
+    const [NameList, setNameList] = useState([])
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const Headername = Name;
+        setNameList([...NameList,Headername]);
+        console.log(NameList);
+    }
+    
 
     return (
 
 
         <>
-
+        
         <header className="w-full bg-gray-400 shadow-lg px-6 py-3 flex justify-center gap-4">
 
             <button className="px-5 py-2 bg-gray-800 text-white font-semibold rounded-md shadow">
@@ -20,18 +31,25 @@ const Header = () => {
             <button className="px-5 py-2 bg-gray-800 text-white font-semibold rounded-md shadow">
                 TOP OF THE LINE
             </button>
+
             <button className="px-5 py-2 bg-gray-800 text-white font-semibold rounded-md shadow">
                 SPECIAL OFFER
             </button>
 
-            <label className="px-5 py-2 bg-gray-800 text-white font-semibold rounded-md shadow">
-                MY ACCOUNT</label>
+            <form onSubmit={handleSubmit}>
             <input type = "text"
             placeholder="Sign in"
             className="p-3 mb-3 border rounded"
             onChange={(e) => setName(e.target.value)}
             ></input>
 
+            <button className="px-5 py-2 bg-gray-800 text-white font-semibold rounded-md shadow">Submit</button>
+            
+            
+            </form>
+
+         
+           <List Namelist={NameList}/>
 
 <h1>{Name}</h1>
         </header>
@@ -43,7 +61,7 @@ const Header = () => {
             </div>
                 {/* NEED PA PICTURE*/}
             <div className="w-full h-56 overflow-hidden bg-black">
-                <img src="" className="w-full opacity-90" />
+                
             </div>
 
             <div className="w-full flex items-center justify-between py-10 px-10">
@@ -52,7 +70,7 @@ const Header = () => {
                     ❮
                 </div>
                 {/* NEED PA PICTURE*/}
-                <img src="" className="w-96 drop-shadow-xl" />
+               
 
                 <div className="text-4xl cursor-pointer">
                     ❯
