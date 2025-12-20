@@ -1,32 +1,7 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
-
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// src/components/BookingModal.jsx
+// src/components/Booking.jsx
 import React, { useState } from 'react';
 
-const BookingModal = ({ isOpen, onClose, car, isLoggedIn }) => {
+const Booking= ({ isOpen, onClose, car, isLoggedIn }) => {
     const [dates, setDates] = useState({ pickup: '', dropoff: '' });
 
     if (!isOpen) return null;
@@ -46,8 +21,9 @@ const BookingModal = ({ isOpen, onClose, car, isLoggedIn }) => {
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 p-4">
             <div className="bg-white p-8 rounded-lg shadow-2xl w-full max-w-lg">
-                <h2 className="text-2xl font-bold mb-4 text-gray-800">Book {car.name}</h2>
-                <p className="mb-6 text-lg text-green-600">${car.price.toFixed(2)} / day</p>
+                <h2 className="text-2xl font-bold mb-4 text-gray-800">Book {car?.name}</h2>
+                <p className="mb-6 text-lg text-green-600">${car?.price?.toFixed(2)} / day</p>
+
 
                 <form onSubmit={handleSubmit}>
                     <div className="grid grid-cols-2 gap-4 mb-6">
@@ -101,4 +77,4 @@ const BookingModal = ({ isOpen, onClose, car, isLoggedIn }) => {
     );
 };
 
-export default BookingModal;
+export default Booking;
